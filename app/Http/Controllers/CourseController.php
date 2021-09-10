@@ -23,7 +23,7 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         return view('admin.course', [
-            'courses' => Course::all(),
+            'courses' => Course::latest()->simplePaginate(10),
             'course' => $course,
         ]);
     }
