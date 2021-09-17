@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ Route::get('/course/{course}', [CourseController::class, 'edit'])->name(
 Route::put('/course/{course}', [CourseController::class, 'update'])->name(
     'course.update'
 );
+
+Route::resource('teacher',TeacherController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

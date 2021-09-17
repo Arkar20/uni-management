@@ -17,6 +17,10 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('desc');
+            $table->foreignId('teacher_id')->constrained();
+            $table->foreignId('section_id')->constrained();
+            $table->timestamp('start_date')->nullable();
+            $table->timestamp('end_date')->nullable();
             $table->timestamps();
         });
     }

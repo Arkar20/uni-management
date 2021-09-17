@@ -10,7 +10,7 @@ class CourseController extends Controller
 {
     public function index()
     {
-        return view('admin.course', [
+        return view('admin.course.course', [
             'courses' => Course::latest()->simplePaginate(10),
         ]);
     }
@@ -23,19 +23,20 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         return view('admin.course', [
-            'courses' => Course::latest()->simplePaginate(10),
+            'courses' => Course::latest()->paginate(10),
             'course' => $course,
         ]);
     }
     public function update(Course $course, CourseRequest $request)
     {
-        $course->update(['name' => $request->name, 'desc' => $request->desc]);
+        $course->update($request->toArray());
 
         return redirect()->route('course.index');
     }
     public function store(CourseRequest $request)
     {
-        Course::create(['name' => $request->name, 'desc' => $request->desc]);
+        // dd($request->toArray());
+        Course::create($request->toArray());
 
         return back();
     }

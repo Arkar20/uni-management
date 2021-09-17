@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{asset('js/app.js') }}" defer></script>
   <!-- Bootstrap CSS -->
   <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" />
   <!-- bootstrap theme -->
@@ -36,7 +36,7 @@
 
   <!-- Custom styles -->
   <link href="{{asset ('css/style.css')}}" rel="stylesheet">
-  <link href="css/style-responsive.css" rel="stylesheet" />
+  <link href="{{asset('css/style-responsive.css')}}" rel="stylesheet" />
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
   <!--[if lt IE 9]>
@@ -402,131 +402,9 @@
     </aside>
     <!--sidebar end-->
 
-    <!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-file-text-o"></i> Form elements</h3>
-            <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-              <li><i class="icon_document_alt"></i>Forms</li>
-              <li><i class="fa fa-file-text-o"></i>Form elements</li>
-            </ol>
-          </div>
-        </div>
-         <div class="row">
-          <div class="col-lg-12">
-            
-            <section class="panel">
-              <header class="panel-heading">
-                Form Elements
-              </header>
-            
-              <div class="panel-body">
 
-              @if(request()->route()->getName()=="course.index")
-                <form class="form-horizontal " method="post" action="{{route('course.store')}}">
-                    @csrf
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Name</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" name="name" >
-                     @error('name')
-                      <span class="text-danger">{{$message}}</span>
-                    @enderror
-                    </div>
-
-                  </div>
-                 
-                  <div class="form-group">
-                       <label class="col-sm-2 control-label">Description</label>
-                  <div class="panel-body col-lg-10 flex justify-content-center">
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="desc"></textarea>
-                    @error('desc')
-                      <span class="text-danger">{{$message}}</span>
-                    @enderror
-                </div>
-                  </div>
-
-                   <div class="form-group">
-                      <div class="col-lg-offset-2 col-lg-10">
-                        <button class="btn btn-primary" type="submit">Save</button>
-                        <button class="btn btn-default" type="button">Cancel</button>
-                      </div>
-                    </div>
-                </form>
-              @endif 
-                @if(request()->route()->getName()=="course.edit")
-                <form class="form-horizontal " method="post" action="{{route('course.update',$course->id)}}">
-                    @method('PUT')
-                    @csrf
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Name</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" name="name" value="{{$course->name??''}}">
-                     @error('name')
-                      <span class="text-danger">{{$message}}</span>
-                    @enderror
-                    </div>
-
-                  </div>
-                 
-                  <div class="form-group">
-                       <label class="col-sm-2 control-label">Description</label>
-                  <div class="panel-body col-lg-10 flex justify-content-center">
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="desc">{{$course->desc??''}}</textarea>
-                    @error('desc')
-                      <span class="text-danger">{{$message}}</span>
-                    @enderror
-                </div>
-                  </div>
-
-                   <div class="form-group">
-                      <div class="col-lg-offset-2 col-lg-10">
-                        <button class="btn btn-primary" type="submit">Save</button>
-                        <button class="btn btn-default" type="button">Cancel</button>
-                      </div>
-                    </div>
-                </form>
-              @endif 
-              </div>
-            </section>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>COuse Name</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                 @foreach($courses as $course)
-                    <tr>
-                        <td>{{$course->id}}</td>
-                        <td>{{$course->name}}</td>
-                        <td>{{$course->desc}}</td>
-                        <td>
-                                <div class="btn-group">
-                                    
-                                    <form action="{{route('course.delete',$course->id)}}" method="post">
-                                        @method('DELETE')
-                                        @csrf
-                                         <button class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></button>
-                                    </form>
-                                         <a class="btn btn-primary" href="{{route('course.edit',$course->id)}}"><i class="icon_plus_alt2"></i></a>
-                                </div>
-                         </td>
-                    </tr>
-                  @endforeach
-                  
-                </tbody>
-              </table>
-              <div class="d-flex  justify-content-center">
-                {{$courses->links()}}
-              </div>
-            {{-- <section class="panel">
+    @yield('content')
+       {{-- <section class="panel">
               <div class="panel-body">
                 <form class="form-horizontal " method="get">
                   <div class="form-group has-success">
@@ -1125,12 +1003,14 @@
   <script src="{{asset('js/boot(strap-colorpicker.js')}}"></script>
   <script src="{{asset('js/daterangepicker.js')}}"></script>
   <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
+
+
   <!-- ck editor -->
-  <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
+  <script type="text/javascript" src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
   <!-- custom form component script for this page-->
   <script src="(js/form-component.js)"></script>
   <!-- custome script for all page -->
-  <scrip(t src="js/scripts.js)"></scrip>
+  <scrip(t src="js/scripts.js"></scrip>
 
 
 </body>

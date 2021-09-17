@@ -26,6 +26,10 @@ class CourseRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:255',
             'desc' => 'required|min:4|max:255',
+            'teacher_id'=>'required',
+            'section_id'=>'required',
+            'start_date'=>'required',
+            'end_date'=>'required',
         ];
     }
 }
