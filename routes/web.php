@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware('auth')->group(function(){
+
 Route::get('/course', [CourseController::class, 'index'])->name('course.index');
 Route::post('/course', [CourseController::class, 'store'])->name(
     'course.store'
@@ -34,6 +36,8 @@ Route::put('/course/{course}', [CourseController::class, 'update'])->name(
 );
 
 Route::resource('teacher',TeacherController::class);
+
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
