@@ -164,7 +164,7 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Course Start Date</label>
                     <div class="col-sm-10">
-                      <input type="date" class="form-control" name="start_date" value="{{$course->start_date}}" >
+                        <input type='date' class='form-control' name='' value='{{$course->start_date}}' required/>
                      @error('start_date')
                       <span class="text-danger">{{$message}}</span>
                     @enderror
