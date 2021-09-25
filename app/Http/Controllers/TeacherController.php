@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use App\Http\Requests\TeacherRequest;
+use App\Http\Requests\TeacherUpdateRequest;
 
 class TeacherController extends Controller
 {
@@ -14,7 +16,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-       return view('admin.teacher.index',['teachers'=>Teacher::paginate(10)]);
+       return view('admin.teacher.index',['teachers'=>Teacher::orderBy('updated_at','desc')->paginate(10)]);
     }
 
     /**
@@ -33,9 +35,13 @@ class TeacherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(TeacherRequest $request)
+     {
+     unset($request['password_confirmation']);
+       
+      Teacher::create($request->toArray());
+
+      return redirect()->route('teacher.index');
     }
 
     /**
@@ -44,9 +50,10 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Teacher $teacher)
     {
-        //
+        return view('admin.teacher.teacheredit',compact('teacher'));
+
     }
 
     /**
@@ -55,9 +62,8 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
     }
 
     /**
@@ -67,9 +73,17 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TeacherUpdateRequest $request, Teacher $teacher)
     {
-        //
+       
+       $teacher->update(['name'=>$request->name,
+                         'password'=>$request->password?:$teacher->password,
+                         'contact_number'=>$request->contact_number,
+                        'email'=>$request->email,
+                        'address'=>$request->address,
+                        ]);
+
+      return redirect()->route('teacher.index');
     }
 
     /**
@@ -78,8 +92,12 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Teacher $teacher)
     {
-        //
+        $teacher->delete();
+
+      return redirect()->route('teacher.index');
+
+       
     }
 }

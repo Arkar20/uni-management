@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\TeacherController;
 
@@ -15,12 +17,14 @@ use App\Http\Controllers\TeacherController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::middleware('auth')->group(function(){
+// Route::middleware('auth')->group(function(){
 
+
+// });
 Route::get('/course', [CourseController::class, 'index'])->name('course.index');
 Route::post('/course', [CourseController::class, 'store'])->name(
     'course.store'
@@ -35,9 +39,17 @@ Route::put('/course/{course}', [CourseController::class, 'update'])->name(
     'course.update'
 );
 
+Route::get('/staff/login',function(){
+    return view('admin.layouts.login');
+})->name('staff.login');
+
+
+Route::post('/staff',[StaffController::class,'login'])->name('staff.store');
+Route::post('/staff/login',[StaffController::class,'logout'])->name('staff.logout');
+
 Route::resource('teacher',TeacherController::class);
 
-});
+Route::get('/',[HomeController::class,'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

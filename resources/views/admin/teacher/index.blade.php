@@ -40,15 +40,15 @@
                         <td>{{$teacher->email}}</td>
                         <td>{{$teacher->address}}</td>
                         <td>
-                                {{-- <div class="btn-group">
+                                <div class="btn-group">
                                     
-                                    <form action="{{route('course.delete',$course->id)}}" method="post">
+                                    <form action="{{route('teacher.destroy',$teacher->id)}}" method="post">
                                         @method('DELETE')
                                         @csrf
                                          <button class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></button>
                                     </form>
-                                         <a class="btn btn-primary" href="{{route('course.edit',$course->id)}}"><i class="icon_plus_alt2"></i></a>
-                                </div> --}}
+                                         <a class="btn btn-primary" href="{{route('teacher.show',$teacher->id)}}"><i class="icon_plus_alt2"></i></a>
+                                </div>
                          </td>
                     </tr>
                   @endforeach

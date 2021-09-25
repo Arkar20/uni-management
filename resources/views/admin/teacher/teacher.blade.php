@@ -1,6 +1,10 @@
 @extends('admin.layouts.app')
 
 @section('content')
+  
+@foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+  @endforeach
  <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
@@ -29,7 +33,7 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Name</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="name" >
+                      <input type="text" class="form-control" name="name" value="{{old('name')}}">
                      @error('name')
                       <span class="text-danger">{{$message}}</span>
                     @enderror
@@ -39,7 +43,7 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">E-mail</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="email" >
+                      <input type="text" class="form-control" name="email" value="{{old('email')}}">
                      @error('email')
                       <span class="text-danger">{{$message}}</span>
                     @enderror
@@ -49,7 +53,7 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Ph-Number</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="contact_number" >
+                      <input type="text" class="form-control" name="contact_number" value="{{old('contact_number')}}">
                      @error('email')
                       <span class="text-danger">{{$message}}</span>
                     @enderror
@@ -67,11 +71,21 @@
                     </div>
 
                   </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Confirmed Password</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" name="password_confirmation" >
+                     @error('password_confirmation')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                    </div>
+
+                  </div>
 
                   <div class="form-group">
                        <label class="col-sm-2 control-label">Address</label>
                   <div class="panel-body col-lg-10 flex justify-content-center">
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="address"></textarea>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="address" >{{old('address')}}</textarea>
                     @error('address')
                       <span class="text-danger">{{$message}}</span>
                     @enderror
