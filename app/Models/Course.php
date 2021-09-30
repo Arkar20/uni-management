@@ -18,9 +18,18 @@ class Course extends Model
     {
         return $this->belongsTo(Teacher::class);
     }
-    public function section()
+    public function sections()
     {
-        return $this->belongsTo(Section::class);
+        return $this->hasMany(Section::class);
+    }
+    public function getStartDate()
+    {
+        return date('d-M-Y', strtotime($this->start_date));
+    }
+    public function getEndDate()
+    {
+        return date('d-M-Y', strtotime($this->end_date));
+
     }
     public function getStartDateAttribute($value)
     {

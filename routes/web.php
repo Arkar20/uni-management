@@ -38,6 +38,11 @@ Route::get('/course/{course}', [CourseController::class, 'edit'])->name(
 Route::put('/course/{course}', [CourseController::class, 'update'])->name(
     'course.update'
 );
+Route::post('/course/attend', [CourseController::class, 'attend'])->name(
+    'course.attend'
+);
+
+Route::get('/student/{course}',[CourseController::class, 'show'])->name('course.show');
 
 Route::get('/staff/login',function(){
     return view('admin.layouts.login');

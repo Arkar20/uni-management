@@ -9,9 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Section extends Model
 {
     use HasFactory;
+
+    protected $fillable=['course_id','user_id'];
     
-     public function courses()
+     public function course()
     {
-        return $this->hanMany(Course::class);
+        return $this->belongsTo(Course::class);
     }
 }
