@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+      public function attendsections()
+    {
+        return $this->belongsToMany(Section::class);
+    }
+    public function attendClass($sectionid)
+    {
+       return $this->attendsections()->attach([
+                    'section_id'=>$sectionid
+                ]);
+    }
 }

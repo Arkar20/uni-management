@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Staff;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Requests\CourseRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserSendEmailOnAttendClass;
 
 class CourseController extends Controller
 {
@@ -42,5 +46,27 @@ class CourseController extends Controller
         Course::create($request->toArray());
 
         return back();
+    }
+    public function show(Course $course = null)
+    {
+        return view('students.detail',compact('course'));
+    }
+    public function attend(Request $request)
+    {
+        $user=auth()->user()?:User::first();
+        
+       $data= $user->attendClass($request->section);
+
+        $admin=Staff::first();
+
+       Mail::to($admin)->send(new UserSendEmailOnAttendClass($user));
+
+        return redirect('/');
+    }
+    public function showPrice(Course $course)
+    {
+        $sections=$course->sections;
+
+        return view('students.price',compact('sections'));
     }
 }

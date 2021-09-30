@@ -11,6 +11,12 @@ class HomeController extends Controller
     public function index()
     {
        
-        return view('students.index',['sections'=>Section::latest()->paginate(4)]);
+        return view('students.index',['courses'=>Course::latest()->paginate(4)]);
+    }
+
+    public function show()
+    {
+        return view('students.show',['courses'=>Course::latest()->paginate(6)]);
+
     }
 }

@@ -32,12 +32,22 @@ Route::post('/course', [CourseController::class, 'store'])->name(
 Route::delete('/course/{course}', [CourseController::class, 'delete'])->name(
     'course.delete'
 );
+
+Route::get('/course',[HomeController::class, 'show'])->name('course.show');
+
 Route::get('/course/{course}', [CourseController::class, 'edit'])->name(
     'course.edit'
 );
 Route::put('/course/{course}', [CourseController::class, 'update'])->name(
     'course.update'
 );
+Route::post('/course/attend', [CourseController::class, 'attend'])->name(
+    'course.attend'
+);
+
+Route::get('/student/{course}',[CourseController::class, 'show'])->name('course.single');
+
+Route::get('/student/{course}/pricing',[CourseController::class, 'showPrice'])->name('student.pricing');
 
 Route::get('/staff/login',function(){
     return view('admin.layouts.login');
