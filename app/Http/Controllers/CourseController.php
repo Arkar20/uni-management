@@ -63,13 +63,10 @@ class CourseController extends Controller
 
         return redirect('/');
     }
-<<<<<<< HEAD
     public function showPrice(Course $course)
     {
         $sections=$course->sections;
 
         return view('students.price',compact('sections'));
     }
-=======
->>>>>>> 3b7a8e1a23596b5e45efc429ecce9ae737848e8e
 }

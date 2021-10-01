@@ -1,7 +1,6 @@
 @extends('students.layouts.app')
 
 @section('content')
-<<<<<<< HEAD
    <!-- Start Banner Hero -->
     <div id="work_single_banner" class="bg-light w-100">
         <div class="container-fluid text-light d-flex justify-content-center align-items-center border-0 rounded-0 p-0 py-5">
@@ -125,35 +124,5 @@
     </article>
     <!-- End Related Post -->
 
-=======
-
-@include('students.layouts.carousel')
-<form action="{{route('course.attend')}}" class="portfolio-info card container mt-10" method="post">
-    @csrf
-    <input type="hidden" value="{{$course->id}}" name="course">
-              <h3>Course information</h3>
-              <ul>
-                <li><strong>Name</strong>: {{$course->name}}</li>
-                <li><strong>Course Start date</strong>: {{$course->getStartDate()}}</li>
-                <li><strong>Course End Date</strong>:{{$course->getEndDate()}}</li>
-              </ul>
-              <div class="containers d-inline">
-            
-            @foreach ($course->sections as $section)
-            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="section" id="inlineRadio1" value="{{$section->id}}">
-                                <label class="form-check-label" for="inlineRadio1">{{$section->name}}</label>
-             </div>
-             @endforeach
-
-        </div>
-                
-        <button type="submit" class="btn btn-primary">Attend</button>
-</form>
-        
-
-                      
-          
->>>>>>> 3b7a8e1a23596b5e45efc429ecce9ae737848e8e
 
 @endsection
