@@ -1,5 +1,6 @@
 @extends('students.layouts.app')
 
+<<<<<<< HEAD
 @section('content')
 
 
@@ -44,6 +45,23 @@
                                 <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">Get Started</a>
                             </div>
                         </div>
+=======
+
+@section('content')
+
+
+@include('students.layouts.carousel')
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title" data-aos="zoom-out">
+          <h2>About</h2>
+          <p>Who we are</p>
+        </div>
+>>>>>>> 3b7a8e1a23596b5e45efc429ecce9ae737848e8e
 
                     </div>
                     <div class="carousel-item">
@@ -123,6 +141,7 @@
     <section class="container overflow-hidden py-5">
         <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
 
+<<<<<<< HEAD
             <!-- Start Recent Work -->
             <div class="col-xl-3 col-md-4 col-sm-6 project ui branding">
                 <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
@@ -226,6 +245,43 @@
                     </div>
                 </a>
             </div><!-- End Recent Work -->
+=======
+        <div class="row">
+                @forelse ($courses as $course)
+                    <div class="col-lg-3 col-md-6">
+                            <div class="box" data-aos="zoom-in">
+                            <h3>{{$course->name}}</h3>
+                            <h4><sup>$</sup>0<span> / month</span></h4>
+                            <ul>
+                                <li>{{$course->start_date}}</li>
+                                <li>{{$course->end_date}}</li>
+                                <li>Nulla at volutpat dola</li>
+                                <li class="na">Pharetra massa</li>
+                                <li class="na">Massa ultricies mi</li>
+                            </ul>
+                            <div class="btn-wrap">
+                                <a href="{{route('course.show',$course->id)}}" class="btn-buy">Buy Now</a>
+                            </div>
+                            </div>
+                        </div>
+                @empty
+                    <p>No Course YEt.</p>
+                @endforelse
+                <div class="d-flex justify-content-center m-2">
+                    {{$courses->links()}}
+                </div>
+         
+
+        
+        </div>
+
+      </div>
+    </section><!-- End Pricing Section -->
+
+    <!-- ======= F.A.Q Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container">
+>>>>>>> 3b7a8e1a23596b5e45efc429ecce9ae737848e8e
 
         </div>
     </section>
@@ -346,5 +402,12 @@
     </section>
     <!-- End Recent Work -->
 
+<<<<<<< HEAD
 
+=======
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+>>>>>>> 3b7a8e1a23596b5e45efc429ecce9ae737848e8e
 @endsection
