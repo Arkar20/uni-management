@@ -1,6 +1,5 @@
 @extends('students.layouts.app')
 
-<<<<<<< HEAD
 @section('content')
 
 
@@ -45,23 +44,6 @@
                                 <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">Get Started</a>
                             </div>
                         </div>
-=======
-
-@section('content')
-
-
-@include('students.layouts.carousel')
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-
-        <div class="section-title" data-aos="zoom-out">
-          <h2>About</h2>
-          <p>Who we are</p>
-        </div>
->>>>>>> 3b7a8e1a23596b5e45efc429ecce9ae737848e8e
 
                     </div>
                     <div class="carousel-item">
