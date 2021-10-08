@@ -46,7 +46,8 @@
         </div>
          <div class="container col-lg-8 card my-2 ">
                 <h3>Credit Card Infromation</h3>
-                <form class="contact-form row" method="post" action="#" role="form">
+                <form class="contact-form row" method="POST" action="{{route('course.attend')}}" role="form">
+                    @csrf
                     <input type="hidden" name="section" value="{{$section->id}}"/> 
                     <div class="col-lg-12 mb-4">
                         <div class="form-floating">
