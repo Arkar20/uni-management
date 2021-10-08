@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Staff;
 use App\Models\Course;
+use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Requests\CourseRequest;
@@ -68,5 +69,10 @@ class CourseController extends Controller
         $sections=$course->sections;
 
         return view('students.price',compact('sections'));
+    }
+    public function showSection(Section $section)
+    {
+
+        return view('students.section',compact('section'));
     }
 }

@@ -41,6 +41,11 @@ Route::get('/course/{course}', [CourseController::class, 'edit'])->name(
 Route::put('/course/{course}', [CourseController::class, 'update'])->name(
     'course.update'
 );
+
+
+Route::get('/course/attend/{section}', [CourseController::class, 'showsection'])->name(
+    'course.section'
+);
 Route::post('/course/attend', [CourseController::class, 'attend'])->name(
     'course.attend'
 );

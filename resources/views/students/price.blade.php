@@ -70,7 +70,7 @@
                             <li><i class="bx bxs-circle me-2"></i>Customizations</li>
                         </ul>
                         <div class="pricing-table-footer pt-1">
-                            <a href="#" class="btn rounded-pill px-4 btn-outline-primary light-300">Get Now</a>
+                            <a href="{{route('course.section',$section->id)}}" class="btn rounded-pill px-4 btn-outline-primary light-300">Get Now</a>
                         </div>
                     </div>
                 </div>
