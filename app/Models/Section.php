@@ -10,7 +10,7 @@ class Section extends Model
 {
     use HasFactory;
 
-    protected $fillable=['course_id','user_id'];
+   protected $guarded = [];
     
      public function course()
     {

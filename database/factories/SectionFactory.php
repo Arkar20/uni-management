@@ -25,7 +25,7 @@ class SectionFactory extends Factory
 
         return [
             'name'=>$this->faker->word(),
-            'timetable' => $this->faker->sentence(),
+            'desc' => $this->faker->sentence(),
             'course_id'=>rand(1,10)
         ];
     }

@@ -75,13 +75,16 @@ class TeacherController extends Controller
      */
     public function update(TeacherUpdateRequest $request, Teacher $teacher)
     {
-       
-       $teacher->update(['name'=>$request->name,
+
+      $data=[ 
+          'name'=>$request->name,
                          'password'=>$request->password?:$teacher->password,
                          'contact_number'=>$request->contact_number,
                         'email'=>$request->email,
                         'address'=>$request->address,
-                        ]);
+    ];
+       
+       $teacher->updateRecord($data);
 
       return redirect()->route('teacher.index');
     }

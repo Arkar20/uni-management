@@ -29,7 +29,7 @@ class StaffController extends Controller
                 ]);
         }
 
-        return redirect()->route('course.index');
+        return redirect()->route('staff.course');
 
     }
     public function logout()

@@ -84,7 +84,7 @@
         </div>
     </div>
     <!-- End Content -->
-            <div class="container col-lg-8 card my-2 ">
+            {{-- <div class="container col-lg-8 card my-2 ">
                 <h3>Credit Card Infromation</h3>
                 <form class="contact-form row" method="post" action="#" role="form">
                         
@@ -99,5 +99,5 @@
                         <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Join</button>
                     </div>
                 </form>
-            </div>
+            </div> --}}
 @endsection

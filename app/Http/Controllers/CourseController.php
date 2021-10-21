@@ -16,37 +16,59 @@ class CourseController extends Controller
 {
     public function index()
     {
-        return view('admin.course.course', [
+        return view('admin.course.index', [
             'courses' => Course::latest()->simplePaginate(10),
         ]);
+    }
+    public function create()
+    {
+       return view('admin.course.course');
     }
     public function delete(Course $course)
     {
         $course->delete();
 
-        return back();
+        return back()->with('meg','Course Deleted Successfully!');
     }
     public function edit(Course $course)
     {
 
 
-        return view('admin.course.course', [
+        return view('admin.course.courseedit', [
             'courses' => Course::latest()->paginate(10),
             'course' => $course,
         ]);
     }
-    public function update(Course $course, CourseRequest $request)
+    public function update(Course $course,CourseRequest $request)
     {
-        $course->update($request->toArray());
+    //  return $request->all();
+        // dd($request->all());
+        $course->update(['name'=>$request->name,
+                            'desc'=>$request->desc,
+                         'course_img'=>$request->img?$request->img->storeAs('imgs',$request->img->getClientOriginalName()):null,
+                         'teacher_id'=>$request->teacher_id,
+                         'start_date'=>$request->start_date,
+                         'end_date'=>$request->end_date,
+                         "price"=>$request->price,    
+                         'major'=>$request->major,                    
+                        ]);
 
-        return redirect()->route('course.index');
+        return redirect()->route('staff.course')->with('meg','Course Updated Successfully!');
     }
     public function store(CourseRequest $request)
     {
         // dd($request->toArray());
-        Course::create($request->toArray());
+        Course::create(['name'=>$request->name,
+                            'desc'=>$request->desc,
+                         'course_img'=>$request->img->storeAs('imgs',$request->img->getClientOriginalName()),
+                         'teacher_id'=>$request->teacher_id,
+                         'start_date'=>$request->start_date,
+                         'end_date'=>$request->end_date,
+                         "price"=>$request->price,    
+                         'major'=>$request->major,                    
+                        ]);
 
-        return back();
+        return redirect()->route('staff.course')->with('meg','Course Created Successfully!');
     }
     public function show(Course $course = null)
     {

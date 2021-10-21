@@ -28,8 +28,8 @@ class CourseFactory extends Factory
             'teacher_id'=>rand(1,10),
             'start_date'=>Carbon::now(),
             'end_date'=>Carbon::now()->addMonths(3),
-            
-
+            'price'=>rand(1,10),
+            'major'=>"Civil",
         ];
     }
 }

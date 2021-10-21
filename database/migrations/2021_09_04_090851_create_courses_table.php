@@ -20,6 +20,9 @@ class CreateCoursesTable extends Migration
             $table->foreignId('teacher_id')->constrained();
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
+            $table->integer('price');
+            $table->string('major');
+            $table->string('course_img')->nullable();
             $table->timestamps();
         });
     }

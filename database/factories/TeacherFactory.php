@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Teacher;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -27,7 +28,9 @@ class TeacherFactory extends Factory
             'email'=>$this->faker->email(),
             'address'=>$this->faker->paragraph(),
             'contact_number'=> rand(10000000,99999999),
-            'password'=>Hash::make('unimanagementteacher')
+            'password'=>Hash::make('unimanagementteacher'),
+            'nrc'=>rand(10000000,99999999),
+            'dob'=>Carbon::now()
         ];
     }
 }

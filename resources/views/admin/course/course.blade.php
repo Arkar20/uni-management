@@ -24,8 +24,8 @@
             
               <div class="panel-body">
 
-              @if(request()->route()->getName()=="course.index")
-                <form class="form-horizontal " method="post" action="{{route('course.store')}}">
+              {{-- @if(request()->route()->getName()=="course.index") --}}
+                <form class="form-horizontal " method="post" action="{{route('course.store')}}" enctype="multipart/form-data">
                     @csrf
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Name</label>
@@ -38,23 +38,7 @@
 
                   </div>
 
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Choose Section</label>
-                    <div class="col-sm-10">
-                     <select name="section_id" id="section" class="form-control">
-                         <option value="">Choose One Section</option>
-
-                        @foreach (App\Models\Section::all() as $section)
-                         <option value={{$section->id}}>{{$section->name}}-({{$section->section_start_date.'-'.$section->section_end_date}}</option>
-                        @endforeach
-                     </select>
-                     @error('section')
-                      <span class="text-danger">{{$message}}</span>
-                    @enderror
-                    </div>
-                    
-
-                  </div>
+                
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Choose Teacher</label>
                     <div class="col-sm-10">
@@ -92,6 +76,44 @@
                     </div>
 
                   </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Price</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" name="price" >
+                     @error('price')
+                      <span class="text-danger">{{$message}}</span>
+                    @enderror
+                    </div>
+
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Course Image</label>
+                    <div class="col-sm-10">
+                      <input type="file" class="form-control" name="img" >
+                     @error('price')
+                      <span class="text-danger">{{$message}}</span>
+                    @enderror
+                    </div>
+
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Major</label>
+                    <div class="col-sm-10">
+                      <select  class="form-control" name="major">
+                        <option value="">Choose One Major</option>
+                        <option value="Civil">Civil</option>
+                        <option value="Mechanical">Mechanical</option>
+                        <option value="Mechantronic">Mechantronic</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Chemical">Chemical</option>
+                      </select>
+                     @error('price')
+                      <span class="text-danger">{{$message}}</span>
+                    @enderror
+                    </div>
+
+                  </div>
+                  
                  
                   <div class="form-group">
                        <label class="col-sm-2 control-label">Description</label>
@@ -110,7 +132,7 @@
                       </div>
                     </div>
                 </form>
-              @endif 
+              {{-- @endif  --}}
                 @if(request()->route()->getName()=="course.edit")
                 <form class="form-horizontal " method="post" action="{{route('course.update',$course->id)}}">
                     @method('PUT')
@@ -203,42 +225,6 @@
               @endif 
               </div>
             </section>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Couse Name</th>
-                    <th>Description</th>
-                    <th>Tr Name</th>
-                    <th>Section</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                 @foreach($courses as $index=>$course)
-                    <tr>
-                        <td>{{$index+1}}</td>
-                        <td>{{$course->name}}</td>
-                        <td>{{$course->desc}}</td>
-                        <td>{{$course->teacher->name}}</td>
-                        <td>{{$course->section->section_start_date}}-{{$course->section->section_end_date}}</td>
-                        <td>
-                                <div class="btn-group">
-                                    
-                                    <form action="{{route('course.delete',$course->id)}}" method="post">
-                                        @method('DELETE')
-                                        @csrf
-                                         <button class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></button>
-                                    </form>
-                                         <a class="btn btn-primary" href="{{route('course.edit',$course->id)}}"><i class="icon_plus_alt2"></i></a>
-                                </div>
-                         </td>
-                    </tr>
-                  @endforeach
-                  
-                </tbody>
-              </table>
-              <div class="d-flex  justify-content-center">
-                {{$courses->links()}}
-              </div>
+           
+               
          @endsection

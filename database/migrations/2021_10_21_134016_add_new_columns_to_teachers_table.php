@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSectionsTable extends Migration
+class AddNewColumnsToTeachersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateSectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sections', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('desc');
-            $table->foreignId('course_id')->constrained()->cascadeOnDelete();
-            $table->timestamps();
+        Schema::table('teachers', function (Blueprint $table) {
+            $table->string('dob')->nullable();
+            $table->string('nrc')->nullable();
         });
     }
 
@@ -29,6 +26,9 @@ class CreateSectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sections');
+        Schema::table('teachers', function (Blueprint $table) {
+            $table->dropColumn('dob');
+            $table->dropColumn('nrc');
+        });
     }
 }

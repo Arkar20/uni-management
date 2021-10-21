@@ -31,6 +31,7 @@
   <link href="{{asset('css/bootstrap-datepicker.css')}}" rel="stylesheet" />
   <link href="{{asset('css/bootstrap-colorpicker.css')}}" rel="stylesheet" />
   <!-- date picker -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- color picker -->
 
@@ -53,7 +54,17 @@
     ======================================================= -->
 </head>
 
-<body>
+<body x-data
+    x-init="
+    @if(\Session::has('meg'))
+        Swal.fire(
+                'Good job!',
+                '{{\Session::get('meg')}}',
+                'success'
+              )
+          "  
+    @endif
+>
 
   <!-- container section start -->
   <section id="container" class="">
