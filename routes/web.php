@@ -7,6 +7,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\TeacherAuthController;
 use App\Http\Controllers\TeacherClientController;
 
 /*
@@ -51,7 +53,10 @@ Route::get('/course/{course}', [CourseController::class, 'edit'])->name(
 Route::delete('/course/{course}', [CourseController::class, 'delete'])->name(
     'course.delete'
 );
+Route::resource('section',SectionController::class);
+Route::resource('teacher',TeacherController::class);
 
+});
 
 
 //student section
@@ -61,10 +66,8 @@ Route::get('/course/attend/{section}', [CourseController::class, 'showsection'])
 Route::post('/course/attend', [CourseController::class, 'attend'])->name(
     'course.attend'
 );
-Route::resource('teacher',TeacherController::class);
 
-Route::resource('section',SectionController::class);
-});
+
 
 Route::get('/course',[HomeController::class, 'show'])->name('course.show');
 
@@ -80,9 +83,21 @@ Route::get("/profile",[StudentController::class,'index'])->name('student.profile
 Route::post("/profile/edit",[StudentController::class,'update'])->name('student.update');
 
 
+
+
+
 //teacher sections
+
+Route::get('/teacher/login',[TeacherAuthController::class,'index'])->name('teacher.loginview');
+Route::post('/teacher/store',[TeacherAuthController::class,'store'])->name('teacher.login');
+Route::post('/teacher/logout',[TeacherAuthController::class,'logout'])->name('teacher.logout');
+
+
+Route::get('/teacher/course/{course}',[TeacherClientController::class,'edit'])->name('teacher.assignmentform');
+Route::post('/teacher/course/{course}/assign',[AssignmentController::class,'store'])->name('teacher.assign');
 Route::put("/teacher/update",[TeacherClientController::class,'update'])->name('teacher.update');
 Route::get("/teacher/profile",[TeacherClientController::class,'show'])->name('teacher.profile');
+Route::get('/teacher',[TeacherClientController::class,'index'])->name('teacher.index');
 
 
 Route::get('/dashboard', function () {

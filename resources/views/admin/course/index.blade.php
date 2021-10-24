@@ -35,7 +35,7 @@
                         <td>{{$index+1}}</td>
                         <td>{{$course->name}}</td>
                         <td>{{$course->desc}}</td>
-                        <td>{{$course->teacher->name}}</td>
+                        <td>{{$course->teacher?$course->teacher->name:'No Teacher Assigned'}}</td>
                         {{-- <td>{{$course->section->section_start_date}}-{{$course->section->section_end_date}}</td> --}}
                         <td>
                                 <div class="btn-group">
@@ -46,7 +46,7 @@
                                          <button class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></button>
                                     </form> --}}
                                     <span class="d-flex justify-content-center">{{$course->sections->count()}}</span>
-                                         <a class="btn btn-primary" href="{{route('section.index')}}"><i class="icon_plus_alt2"></i></a>
+                                         <a class="btn btn-primary" href="{{route('section.edit',$course->id)}}"><i class="icon_plus_alt2"></i></a>
                                 </div>
                          </td>
                         <td>

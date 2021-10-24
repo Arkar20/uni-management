@@ -13,6 +13,7 @@ class Course extends Model
 
     protected $guarded = [];
 
+    protected $withCount=['sections'];
 
     public function teacher()
     {
@@ -38,6 +39,14 @@ class Course extends Model
     public function getEndDateAttribute($value)
     {
         return Carbon::parse($value)->format('Y-m-d');
+    }
+    public function duration()
+    {
+        $startdate=Carbon::parse($this->start_date)->floorMonth();
+        $enddate=Carbon::parse($this->end_date)->floorMonth();
+
+        return $startdate->diffInMonths($enddate);  // returns 1
+
     }
 }
 

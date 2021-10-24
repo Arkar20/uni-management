@@ -46,29 +46,30 @@ https://templatemo.com/tm-561-purple-buzz
                 <div class="flex-fill mx-xl-5 mb-2">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="\">Home</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="{{route('teacher.index')}}">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="\course">Courses</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="\profile">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="pricing.html">Pricing</a>
-                        </li>
+                    
+                        
+                       
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="contact.html">Contact</a>
                         </li>
+
+                        @if(auth()->guard('teacher')->check())
+                       <form action="{{route('teacher.logout')}}" method="POST">
+                            @csrf
+                            <li class="nav-item">
+                                    <button class="nav-link  rounded-pill px-3 btn-danger text-white" type="submit" >Logout</button>
+                                </li>
+                        
+                        </form>
+                        @endif
                     </ul>
                 </div>
                <div class="navbar align-self-center d-flex">
                     <a class="nav-link" href="#"><i class="bx bx-bell bx-sm bx-tada-hover text-primary"></i></a>
                     <a class="nav-link" href="#"><i class="bx bx-cog bx-sm text-primary"></i></a>
-                    <a class="nav-link" href="/profile"><i class="bx bx-user-circle bx-sm text-primary"></i></a>
+                    <a class="nav-link" href="{{route('teacher.profile')}}"><i class="bx bx-user-circle bx-sm text-primary"></i></a>
                 </div>
             </div>
         </div>

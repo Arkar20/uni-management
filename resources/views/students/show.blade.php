@@ -40,7 +40,7 @@
             @forelse ($courses as $course)
                  <a href="{{route('course.single',$course->id)}}" class="col-sm-6 col-lg-4 text-decoration-none project marketing social business">
                 <div class="service-work overflow-hidden card mb-5 mx-5 m-sm-0">
-                    <img class="card-img-top" src="./assets/img/our-work-01.jpg" alt="...">
+                    <img class="card-img-top" src="{{asset($course->course_img)}}" alt="{{$course->name}}"/>
                     <div class="card-body">
                         <h5 class="card-title light-300 text-dark">{{$course->name}}</h5>
                         <p class="card-text light-300 text-dark">

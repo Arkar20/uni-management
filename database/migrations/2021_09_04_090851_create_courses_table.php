@@ -17,7 +17,7 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('desc');
-            $table->foreignId('teacher_id')->constrained();
+            $table->foreignId('teacher_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
             $table->integer('price');

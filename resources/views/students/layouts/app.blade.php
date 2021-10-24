@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{asset('student/assets/css/custom.css')}}">
     
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+         <script src="{{asset('js/app.js') }}" ></script>
+
 
 <!--
     
@@ -78,15 +80,15 @@ https://templatemo.com/tm-561-purple-buzz
             class="container"
             x-data
             x-init="
-            alert('hello')
+           
             @if(\Session::has('meg'))
                 Swal.fire(
                         'Good job!',
                         '{{\Session::get('meg')}}',
                         'success'
                     )
+                    @endif
                 "  
-            @endif
     >
             @yield('content')
         </div>
@@ -246,7 +248,6 @@ https://templatemo.com/tm-561-purple-buzz
     <script src="{{asset('student/assets/js/templatemo.js')}}"></script>
     <!-- Custom -->
     <script src="{{asset('student/assets/js/custom.js')}}"></script>
-
 </body>
 
 </html>

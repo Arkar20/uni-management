@@ -6,12 +6,19 @@ use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\TeacherUpdateRequest;
+use App\Models\Course;
 
 class TeacherClientController extends Controller
 {
+    public function index()
+    {
+        $authteacher = auth()->guard('teacher')->user();
+        return view('teacher.index',['courses'=>$authteacher->courses()->paginate(10)]);
+    }
     public function show()
     {
-        $teacher=Teacher::first();
+        $teacher=auth()->guard('teacher')->user()?:Teacher::first();
+
         return view('teacher.profile',compact('teacher'));
     }
     public function update(TeacherUpdateRequest $request)
@@ -33,4 +40,9 @@ class TeacherClientController extends Controller
 
         return back()->with('meg',"Teacher Profile Updated");
     }
+    public function edit(Course $course)
+    {
+        return view('teacher.assignmentform',compact('course'));
+    }
+   
 }

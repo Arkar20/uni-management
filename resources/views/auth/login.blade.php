@@ -1,9 +1,10 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/" class="d-flex justify-content-center mb-4">
-                <x-application-logo width=64 height=64 />
-            </a>
+            {{-- <a href="/" class="d-flex justify-content-center mb-4"> --}}
+                {{-- <x-application-logo width=64 height=64 /> --}}
+                <h3 class="d-flex justify-content-center mb-4">Student Login Page</h3>
+            {{-- </a> --}}
         </x-slot>
 
         <!-- Session Status -->
