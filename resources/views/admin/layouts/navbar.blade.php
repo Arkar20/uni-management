@@ -10,16 +10,26 @@
                           <span>Dashboard</span>
                       </a>
           </li>
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
+          <li class="sidebar-menu">
+            <a href="{{route('staff.course')}}" class="">
                           <i class="icon_document_alt"></i>
-                          <span>Forms</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
+                          <span>Course</span>
                       </a>
-            <ul class="sub">
-              <li><a class="" href="form_component.html">Form Elements</a></li>
-              <li><a class="" href="form_validation.html">Form Validation</a></li>
-            </ul>
+          
+          </li>
+          <li class="sidebar-menu">
+            <a href="/admin/teacher" class="">
+                          <i class="icon_profile"></i>
+                          <span>Teacher</span>
+                      </a>
+          
+          </li>
+          <li class="sidebar-menu">
+            <a href="{{route('admin.students')}}" class="">
+                          <i class="icon_profile"></i>
+                          <span>Students</span>
+                      </a>
+          
           </li>
           <li class="sub-menu">
             <a href="javascript:;" class="">

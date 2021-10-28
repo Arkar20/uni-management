@@ -97,9 +97,11 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
-        $teacher->delete();
+      if(!$teacher) return  redirect('/admin/teacher')->with('meg','Teacher Not Found');
 
-      return redirect()->route('teacher.index');
+      $teacher->delete();
+
+      return redirect('/admin/teacher')->with('meg','Teacher Deleted Successful');
 
        
     }

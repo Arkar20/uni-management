@@ -76,7 +76,7 @@
                 </div>
             </div>
         @empty
-            <h3>No information available</h3>
+            <h3 class="text-center text-uppercase">No Sections for this Course yet!</h3>
         @endforelse
         
 

@@ -38,14 +38,15 @@
 
         <div class="row projects gx-lg-5">
             @forelse ($courses as $course)
-                 <a href="{{route('course.single',$course->id)}}" class="col-sm-6 col-lg-4 text-decoration-none project marketing social business">
+            <a href="{{route('course.single',$course->id)}}" class="col-sm-6 col-lg-4 text-decoration-none project marketing social business mb-4">
                 <div class="service-work overflow-hidden card mb-5 mx-5 m-sm-0">
-                    <img class="card-img-top" src="{{asset($course->course_img)}}" alt="{{$course->name}}"/>
+                    <img class="card-img-top" src="{{asset($course->getCourseImg())}}" alt="{{$course->name}}" style="height:400px"/>
                     <div class="card-body">
                         <h5 class="card-title light-300 text-dark">{{$course->name}}</h5>
-                        <p class="card-text light-300 text-dark">
-                           {{$course->desc}}
+                        <p class="card-text light-300 text-dark m-0">
+                           {{substr($course->desc,0,20)}}...
                         </p>
+                        <b>Major-{{$course->major}}</b> <br>
                         <span class="text-decoration-none text-primary light-300">
                               Read more <i class='bx bxs-hand-right ms-1'></i>
                           </span>
@@ -61,7 +62,7 @@
          
             
         </div>
-        <div class="row">
+        <div class="container d-flex justify-content-center">
             {{$courses->links()}}
         </div>
     </section>

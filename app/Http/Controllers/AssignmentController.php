@@ -12,7 +12,7 @@ use App\Mail\TeacherSendAssignmentsToStudents;
 
 class AssignmentController extends Controller
 {
-   public function store(Course $course,Request $request)
+   public function store(Course $course,AssignmentRequest $request)
    {
     //   dd($request->sections);
    $sections=Section::whereIn('id',$request->sections)->with('students')->get();
@@ -25,7 +25,7 @@ class AssignmentController extends Controller
        });
    });
 
-   //* storing in database
+   //* storing in database logic
     $sections->each(function($section) use ($request){
         $section->students->each(function($student) use ($request,$section){
 
@@ -43,7 +43,10 @@ class AssignmentController extends Controller
         });
     });
 
-   
+  
+
+
+  return back()->with('meg',"Assignment Assign Successful!");
     // foreach($sections as $section){
     //     dd($section->students);
         // Mail::to($section->student)->send(new TeacherSendAssignmentsToStudents($request));

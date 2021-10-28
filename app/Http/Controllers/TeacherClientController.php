@@ -12,7 +12,7 @@ class TeacherClientController extends Controller
 {
     public function index()
     {
-        $authteacher = auth()->guard('teacher')->user();
+        $authteacher = auth()->guard('teacher')->user()?:Teacher::first();
         return view('teacher.index',['courses'=>$authteacher->courses()->paginate(10)]);
     }
     public function show()

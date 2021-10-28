@@ -43,6 +43,7 @@ return [
         'staff'=>[
             'driver'=>'session',
             'provider' => 'staffs',
+            'redirect'=>"/staff/login"
         ],
         'teacher'=>[
             'driver'=>'session',
@@ -75,6 +76,7 @@ return [
         'staffs' => [
             'driver' => 'eloquent',
             'model' => App\Models\Staff::class,
+            
         ],
         'teachers' => [
             'driver' => 'eloquent',

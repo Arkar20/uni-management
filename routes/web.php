@@ -9,6 +9,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\TeacherAuthController;
+use App\Http\Controllers\StudentAdminController;
 use App\Http\Controllers\TeacherClientController;
 
 /*
@@ -22,9 +23,7 @@ use App\Http\Controllers\TeacherClientController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 
 Route::get('/staff/login',function(){
     return view('admin.layouts.login');
@@ -34,8 +33,10 @@ Route::get('/staff/login',function(){
 Route::post('/admin/',[StaffController::class,'login'])->name('staff.store');
 Route::post('/admin/login',[StaffController::class,'logout'])->name('staff.logout');
 
-Route::prefix('admin')->middleware('auth:staff')->group(function(){
+Route::prefix('admin')->middleware('admin')->group(function(){
 
+    
+Route::get('/',[HomeController::class,'dashboard'])->name('dashboard');
 Route::get('/course', [CourseController::class, 'index'])->name('staff.course');
 Route::get('/course/create', [CourseController::class, 'create'])->name('course.create');
 Route::post('/course', [CourseController::class, 'store'])->name(
@@ -55,6 +56,8 @@ Route::delete('/course/{course}', [CourseController::class, 'delete'])->name(
 );
 Route::resource('section',SectionController::class);
 Route::resource('teacher',TeacherController::class);
+
+Route::get('/students',[StudentAdminController::class,'index'])->name('admin.students');
 
 });
 
@@ -82,7 +85,11 @@ Route::get('/',[HomeController::class,'index']);
 Route::get("/profile",[StudentController::class,'index'])->name('student.profile');
 Route::post("/profile/edit",[StudentController::class,'update'])->name('student.update');
 
-
+Route::get('/check/{id}',function(){
+   if(strpos(Route::currentRouteName(),'check') !== false){
+       return 'true';
+   }
+})->name('check');
 
 
 
@@ -90,14 +97,18 @@ Route::post("/profile/edit",[StudentController::class,'update'])->name('student.
 
 Route::get('/teacher/login',[TeacherAuthController::class,'index'])->name('teacher.loginview');
 Route::post('/teacher/store',[TeacherAuthController::class,'store'])->name('teacher.login');
-Route::post('/teacher/logout',[TeacherAuthController::class,'logout'])->name('teacher.logout');
+
+Route::prefix('teacher')->middleware('teacher')->group(function(){
+Route::post('/logout',[TeacherAuthController::class,'logout'])->name('teacher.logout');
 
 
-Route::get('/teacher/course/{course}',[TeacherClientController::class,'edit'])->name('teacher.assignmentform');
-Route::post('/teacher/course/{course}/assign',[AssignmentController::class,'store'])->name('teacher.assign');
-Route::put("/teacher/update",[TeacherClientController::class,'update'])->name('teacher.update');
-Route::get("/teacher/profile",[TeacherClientController::class,'show'])->name('teacher.profile');
-Route::get('/teacher',[TeacherClientController::class,'index'])->name('teacher.index');
+Route::get('/course/{course}',[TeacherClientController::class,'edit'])->name('teacher.assignmentform');
+Route::post('/course/{course}/assign',[AssignmentController::class,'store'])->name('teacher.assign');
+Route::put("/update",[TeacherClientController::class,'update'])->name('teacher.update');
+Route::get("/profile",[TeacherClientController::class,'show'])->name('teacher.profile');
+Route::get('/',[TeacherClientController::class,'index'])->name('teacher.index');
+
+});
 
 
 Route::get('/dashboard', function () {

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
 {
+
+    private $auth_guards_prefix=['admin','student'.'teacher'];
     /**
      * Handle an incoming request.
      *

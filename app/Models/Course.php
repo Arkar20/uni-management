@@ -48,5 +48,9 @@ class Course extends Model
         return $startdate->diffInMonths($enddate);  // returns 1
 
     }
+    public function getCourseImg()
+    {
+        return $this->course_img?:'/student/assets/img/our-work-05.jpg';
+    }
 }
 

@@ -19,7 +19,8 @@ class AssignmentRequest extends FormRequest
             'assignment_subject' => 'required',
             'assignment_file'=>'required',
             'desc' => 'required',
-            'due_date'=>'required'
+            'due_date'=>'required',
+            'sections' => 'required',
         ];
     }
 }

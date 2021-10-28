@@ -50,6 +50,9 @@
                             @enderror
                         </div>
                     </div><!-- End Textarea Message -->
+                     @error('sections')
+                                  <span class="text-danger">{{$message}}</span>
+                            @enderror
                         @forelse ($course->sections as $section)
                             <input type="checkbox" name="sections[]" value="{{$section->id}}"/>{{$section->name}}
                         @empty

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('student/assets/css/templatemo.css')}}">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('student/assets/css/custom.css')}}">
-    
+    <script src="{{asset('js/app.js')}}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!--
@@ -30,7 +30,17 @@ https://templatemo.com/tm-561-purple-buzz
 -->
 </head>
 
-<body>
+<body x-data
+    x-init="
+   {{-- console.log('hello') --}}
+    @if(\Session::has('meg'))
+        Swal.fire(
+                'Good job!',
+                '{{\Session::get('meg')}}',
+                'success'
+              )
+              @endif
+          "  >
     <!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
