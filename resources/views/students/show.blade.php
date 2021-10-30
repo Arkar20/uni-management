@@ -1,8 +1,10 @@
 @extends('students.layouts.app')
 
 @section('content')
-
-
+<div id="app">
+    <seach-component 
+                        />
+</div>
     <!-- Start Banner Hero -->
     <div id="work_banner" class="banner-wrapper bg-light w-100 py-5">
         <div class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">

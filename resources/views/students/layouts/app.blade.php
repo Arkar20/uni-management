@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{asset('student/assets/css/custom.css')}}">
     
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-         <script src="{{asset('js/app.js') }}" ></script>
+         <script src="{{asset('js/app.js') }}" defer ></script>
 
 
 <!--
@@ -32,7 +32,18 @@ https://templatemo.com/tm-561-purple-buzz
 -->
 </head>
 
-<body>
+<body 
+             x-data
+             @if(\Session::has('meg') )
+             x-init="
+                Swal.fire(
+                        'Good job!',
+                        '{{\Session::get('meg')}}',
+                        'success'
+                    )
+                    "
+                    @endif
+    >
     <!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
@@ -60,7 +71,9 @@ https://templatemo.com/tm-561-purple-buzz
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="\profile">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="pricing.html">Pricing</a>
+                            <div id="app">
+                                <search-component />
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="contact.html">Contact</a>
@@ -78,17 +91,8 @@ https://templatemo.com/tm-561-purple-buzz
     <!-- Close Header -->
         <div 
             class="container"
-            x-data
-            x-init="
-           
-            @if(\Session::has('meg'))
-                Swal.fire(
-                        'Good job!',
-                        '{{\Session::get('meg')}}',
-                        'success'
-                    )
-                    @endif
-                "  
+            
+              
     >
             @yield('content')
         </div>
@@ -217,11 +221,9 @@ https://templatemo.com/tm-561-purple-buzz
     </footer>
 
 
-    <!-- Bootstrap -->
-    <script src="{{asset('student/assets/js/bootstrap.bundle.min.js')}}"></script>
-    <!-- Load jQuery require for isotope -->
-    <script src="{{asset('student/assets/js/jquery.min.js')}}"></script>
-    <!-- Isotope -->
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="{{asset('student/assets/js/isotope.pkgd.js')}}"></script>
     <!-- Page Script -->
     <script>

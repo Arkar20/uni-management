@@ -7,7 +7,7 @@
             <div class="banner-content col-lg-8 m-lg-auto text-center py-5 px-3">
                 <h1 class="banner-heading h2 pb-5 typo-space-line-center">{{$course->name}}<h1>
                 </h1>
-                <h3 class="h4 pb-2 light-300">{{$course->teacher->name}}</h3>
+                <h3 class="h4 pb-2 light-300">Teacher Name-{{$course->teacher?$course->teacher->name:"No Teahcer has Assigned"}}</h3>
                 <p class="banner-footer light-300">
                   {{$course->desc}}
                 </p>

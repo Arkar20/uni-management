@@ -18,7 +18,10 @@ class HomeController extends Controller
 
     public function show()
     {
-        return view('students.show',['courses'=>Course::latest()->paginate(6)]);
+        return view('students.show',[
+                'courses'=>Course::latest()->paginate(6),
+                'searchCourses'=>Course::latest()->select('id','name','course_img','major')->get()
+            ]);
 
     }
     public function dashboard()

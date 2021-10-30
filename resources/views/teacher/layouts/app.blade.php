@@ -87,17 +87,7 @@ https://templatemo.com/tm-561-purple-buzz
     <!-- Close Header -->
         <div 
             class="container"
-            x-data
-            x-init="
-            alert('hello')
-            @if(\Session::has('meg'))
-                Swal.fire(
-                        'Good job!',
-                        '{{\Session::get('meg')}}',
-                        'success'
-                    )
-                "  
-            @endif
+            
     >
             @yield('content')
         </div>

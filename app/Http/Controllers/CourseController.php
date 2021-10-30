@@ -97,4 +97,8 @@ class CourseController extends Controller
 
         return view('students.section',compact('section'));
     }
+    public function getAllCourses()
+    {
+        return Course::latest()->select('id','name','course_img','major')->get();
+    }
 }

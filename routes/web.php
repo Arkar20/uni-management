@@ -29,6 +29,7 @@ Route::get('/staff/login',function(){
     return view('admin.layouts.login');
 })->name('staff.login');
 
+Route::get('/getallcourses',[CourseController::class, 'getAllCourses']);
 
 Route::post('/admin/',[StaffController::class,'login'])->name('staff.store');
 Route::post('/admin/login',[StaffController::class,'logout'])->name('staff.logout');
@@ -65,7 +66,7 @@ Route::get('/students',[StudentAdminController::class,'index'])->name('admin.stu
 //student section
 Route::get('/course/attend/{section}', [CourseController::class, 'showsection'])->name(
     'course.section'
-);
+)->middleware('auth:web');
 Route::post('/course/attend', [CourseController::class, 'attend'])->name(
     'course.attend'
 );

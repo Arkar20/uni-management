@@ -41,6 +41,13 @@ class Teacher extends Authenticatable
     {
       return $this->update($record);
     }
+    public function getNameAttribute($value)
+    {
+      if($value=="undefined")
+        return 'NO TEACHER ASSIGNED';
+      
+      return $value;
+    }
 
 }
 
