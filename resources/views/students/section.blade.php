@@ -32,14 +32,8 @@
                     <div class="pricing-table-body card-body text-center align-self-center p-md-0">
                         <i class="pricing-table-icon display-3 bx bx-package text-secondary"></i>
                         <h2 class="pricing-table-heading h5 semi-bold-600">{{$section->name}}</h2>
-                        <p>$840/Year</p>
-                        <ul class="pricing-table-list text-start text-dark px-4 list-unstyled light-300">
-                            <li><i class="bx bxs-circle me-2"></i>100 users or more</li>
-                            <li><i class="bx bxs-circle me-2"></i>80 TB space</li>
-                            <li><i class="bx bxs-circle me-2"></i>Full Access Sources</li>
-                            <li><i class="bx bxs-circle me-2"></i>Live Chat</li>
-                            <li><i class="bx bxs-circle me-2"></i>Customizations</li>
-                        </ul>
+                        <p>${{$section->course->price}}</p>
+                      
                       
                     </div>
                 </div>

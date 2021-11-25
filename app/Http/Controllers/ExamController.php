@@ -53,7 +53,8 @@ class ExamController extends Controller
     public function show($id)
     {
        $course=Course::find($id);
-    return view('admin.exam.create',compact('course'));
+        
+       return view('admin.exam.create',compact('course'));
 
     }
 

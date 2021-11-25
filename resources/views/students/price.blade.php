@@ -6,7 +6,7 @@
     <!-- Start pricing -->
     <div class="container-lg py-5">
         <div class="col-md-12 m-auto text-center py-5">
-            <h1 class="pricing-header h2 semi-bold-600">Pricing</h1>
+            <h1 class="pricing-header h2 semi-bold-600">Sections</h1>
             <p class="pricing-footer">
                 Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut facilisis.
             </p>
@@ -61,16 +61,21 @@
                     <div class="pricing-table-body card-body text-center align-self-center p-md-0">
                         <i class="pricing-table-icon display-3 bx bx-package text-secondary"></i>
                         <h2 class="pricing-table-heading h5 semi-bold-600">{{$section->name}}</h2>
-                        <p>$840/Year</p>
+                        <p>${{$section->course->price}}</p>
                         <ul class="pricing-table-list text-start text-dark px-4 list-unstyled light-300">
-                            <li><i class="bx bxs-circle me-2"></i>100 users or more</li>
-                            <li><i class="bx bxs-circle me-2"></i>80 TB space</li>
-                            <li><i class="bx bxs-circle me-2"></i>Full Access Sources</li>
-                            <li><i class="bx bxs-circle me-2"></i>Live Chat</li>
-                            <li><i class="bx bxs-circle me-2"></i>Customizations</li>
+                            <li><i class="bx bxs-circle me-2"></i>{{$section->course->exams->count()}} Exam</li>
+                            <li><i class="bx bxs-circle me-2"></i>{{$section->students->count()}} Students</li>
+                            <li><i class="bx bxs-circle me-2"></i>
+                                Start Date-{{$section->course->start_date}}
+                               
+                            </li>
+                            <li><i class="bx bxs-circle me-2"></i>
+                                End Date-{{$section->course->end_date}}
+                            </li>
+                            
                         </ul>
                         <div class="pricing-table-footer pt-1">
-                            <a href="{{route('course.section',$section->id)}}" class="btn rounded-pill px-4 btn-outline-primary light-300">Get Now</a>
+                            <a href="{{route('course.section',$section->id)}}" class="btn rounded-pill px-4 btn-outline-primary light-300">Join Now</a>
                         </div>
                     </div>
                 </div>
