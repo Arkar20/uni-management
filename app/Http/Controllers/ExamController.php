@@ -41,7 +41,7 @@ class ExamController extends Controller
             Exam::create($request->toArray());
 
 
-            return back()->with('meg','Exam Registered Successful');
+            return redirect()->route('exam.index')->with('meg','Exam Registered Successful');
     }
 
     /**
