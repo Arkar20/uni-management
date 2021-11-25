@@ -64,7 +64,7 @@
                     @csrf
 
 
-                    <div class="col-lg-6 mb-4">
+                    <div class="col-lg-12 mb-4">
                         <div class="form-floating">
                             <input type="text" class="form-control form-control-lg light-300" id="floatingname" name="email" placeholder="Name" value="">
                             <label for="floatingname light-300">Email</label>
@@ -74,7 +74,7 @@
                         @enderror
                     </div><!-- End Input Name -->
                     
-                    <div class="col-lg-6 mb-4">
+                    <div class="col-lg-12 mb-4">
                         <div class="form-floating">
                             <input type="text" class="form-control form-control-lg light-300" id="floatingname" name="password" placeholder="Name" value="">
                             <label for="floatingname light-300">Password</label>
@@ -92,34 +92,7 @@
                 </form>
             </div>
             <!-- End Contact Form -->
-             <!-- Start Pricing Horizontal Section -->
-    <section class="bg-light pt-sm-0 py-5">
-        <div class="container py-5">
-
-            <h1 class="h2 semi-bold-600 text-center mt-2">Your Courses</h1>
-            <p class="text-center pb-5 light-300">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut facilisis.</p>
-
-            <!-- Start Pricing Horizontal -->
-            <div class="pricing-horizontal row col-10 m-auto d-flex shadow-sm rounded overflow-hidden bg-white">
-                <div class="pricing-horizontal-icon col-md-3 text-center bg-secondary text-light py-4">
-                    <i class="display-1 bx bx-package pt-4"></i>
-                    <h5 class="h5 semi-bold-600 pb-4 light-300">Free</h5>
-                </div>
-                <div class="pricing-horizontal-body offset-lg-1 col-md-5 col-lg-4 d-flex align-items-center pl-5 pt-lg-0 pt-4">
-                    <ul class="text-left px-4 list-unstyled mb-0 light-300">
-                        <li><i class="bx bxs-circle me-2"></i>5 teachers</li>
-                        <li><i class="bx bxs-circle me-2"></i>2 TB space</li>
-                        <li><i class="bx bxs-circle me-2"></i>Community Forums</li>
-                    </ul>
-                </div>
-                <div class="pricing-horizontal-tag col-md-4 text-center pt-3 d-flex align-items-center">
-                    <div class="w-100 light-300">
-                        <p>$0</p>
-                        <a href="#" class="btn rounded-pill px-4 btn-outline-primary mb-3">Get Now</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Pricing Horizontal -->
+         
 
             
 
