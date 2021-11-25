@@ -61,9 +61,7 @@ https://templatemo.com/tm-561-purple-buzz
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="\">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="about.html">About</a>
-                        </li>
+                      
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="\course">Courses</a>
                         </li>
