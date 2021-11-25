@@ -124,7 +124,7 @@
 
                     <div class="col-lg-12 mb-4">
                         <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingcompany" name="nrc" value="{{$user->nrcp}}">
+                            <input type="text" class="form-control form-control-lg light-300" id="floatingcompany" name="nrc" value="{{$user->nrc}}">
                             <label for="floatingcompany light-300">NRC Number</label>
                         </div>
                          @error('nrc')

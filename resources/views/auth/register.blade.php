@@ -25,6 +25,36 @@
 
                 <x-input id="email" class="" type="email" name="email" :value="old('email')" required />
             </div>
+           
+            <!--NRC -->
+
+            <div class="mt-4">
+                <x-label for="NRC" :value="__('NRC')" />
+
+                <x-input id="email" class="" type="text" name="nrc" :value="old('nrc')" required />
+            </div>
+            <!--NRC -->
+
+            <div class="mt-4">
+                <x-label for="gender" :value="__('Gender')" />
+
+                <select 
+                 name="gender" id="gender"  required class="form-control">
+                    <option value="Male">
+                        Male
+                    </option>
+                    <option value="Female">
+                        Female
+                    </option>
+                </select>
+                {{-- <x-input id="gender" class="" type="text" name="nrc" :value="old('nrc')" required /> --}}
+            </div>
+
+             <div class="mt-4">
+                <x-label for="dob" :value="__('DOB')" />
+
+                <x-input id="dob" class="" type="date" name="dob" :value="old('dob')" required />
+            </div>
 
             <!-- Password -->
             <div class="mt-4">
