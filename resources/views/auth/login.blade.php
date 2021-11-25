@@ -35,18 +35,18 @@
 
             <!-- Remember Me -->
             <div class="mt-3 form-check">
-                <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
-                <label for="remember_me" class="form-check-label text-sm">
-                    {{ __('Remember me') }}
-                </label>
-            </div>
-
-            <div class="d-flex justify-content-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="text-muted" href="{{ route('password.request') }}" style="margin-right: 15px; margin-top: 15px;">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
+            </div>
+
+            <div class="d-flex justify-content-end mt-4">
+                
+                    <a class="text-muted" href="/register" style="margin-right: 15px; margin-top: 15px;">
+                   Not Registered? Sign Up Here.
+                </a>
 
                 <x-button class="ml-3">
                     {{ __('Log in') }}

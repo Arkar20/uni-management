@@ -79,6 +79,7 @@
                 <a class="text-muted" href="{{ route('login') }}" style="margin-right: 15px; margin-top: 15px;">
                     {{ __('Already registered?') }}
                 </a>
+            
 
                 <x-button class="ml-4">
                     {{ __('Register') }}
