@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StudentUpdateRequest;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StudentUpdateRequest;
 
 class StudentController extends Controller
 {
@@ -14,7 +15,13 @@ class StudentController extends Controller
     }
     public function index()
     {
-        return view('students.profile',['user'=>auth()->user()]);
+        $user=auth()->user();
+
+        $course_ids=$user->attendsections->pluck('course_id');
+
+        $courses=Course::whereIn('id',$course_ids)->get();
+        
+        return view('students.profile',['user'=>$user,'courses'=>$courses]);
     }
     public function update(StudentUpdateRequest $request)
     {

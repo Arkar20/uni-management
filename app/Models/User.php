@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Course;
+use App\Models\Section;
 use App\Models\Assignment;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -50,10 +52,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Assignment::class);
     }
+
     public function attendClass($sectionid)
     {
        return $this->attendsections()->attach([
                     'section_id'=>$sectionid
                 ]);
     }
+    
 }

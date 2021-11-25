@@ -26,6 +26,7 @@
                     <th>Description</th>
                     <th>Tr Name</th>
                     <th>Section</th>
+                    <th>Exams</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -38,17 +39,23 @@
                         <td>{{$course->teacher?$course->teacher->name:'No Teacher Assigned'}}</td>
                         {{-- <td>{{$course->section->section_start_date}}-{{$course->section->section_end_date}}</td> --}}
                         <td>
-                                <div class="btn-group">
+                                <div class="btn-group ">
                                     
                                     {{-- <form action="{{route('course.delete',$course->id)}}" method="post">
                                         @method('DELETE')
                                         @csrf
                                          <button class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></button>
                                     </form> --}}
-                                    <span class="d-flex justify-content-center">{{$course->sections->count()}}</span>
+                                       <p class=" text-center">{{$course->sections->count()}}</p>
                                          <a class="btn btn-primary" href="{{route('section.edit',$course->id)}}"><i class="icon_plus_alt2"></i></a>
                                 </div>
                          </td>
+
+                           <td>                                
+                              <p class=" text-center">{{$course->exams_count}}</p>
+
+                              <a class="btn btn-primary" href="{{route('exam.show',$course->id)}}"><i class="icon_plus_alt2"></i></a>
+                        </td>
                         <td>
                                 <div class="btn-group">
                                     
@@ -60,12 +67,15 @@
                                          <a class="btn btn-primary" href="{{route('course.edit',$course->id)}}"><i class="icon_plus_alt2"></i></a>
                                 </div>
                          </td>
+                       
                     </tr>
+
                   @endforeach
                   
                 </tbody>
               </table>
-              <div class="d-flex  justify-content-center">
+              <div class="w-full d-flex justify-content-center bg-primary">
                 {{$courses->links()}}
+              </div>
               </div>
          @endsection

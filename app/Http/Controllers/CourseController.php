@@ -17,7 +17,7 @@ class CourseController extends Controller
     public function index()
     {
         return view('admin.course.index', [
-            'courses' => Course::latest()->paginate(10),
+            'courses' => Course::latest()->withCount('exams')->paginate(10),
         ]);
     }
     public function create()

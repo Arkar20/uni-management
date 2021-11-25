@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Exam;
 use App\Models\Section;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -23,6 +24,12 @@ class Course extends Model
     {
         return $this->hasMany(Section::class);
     }
+    public function exams()
+    {
+        return $this->hasMany(Exam::class);
+    }
+
+
     public function getStartDate()
     {
         return date('d-M-Y', strtotime($this->start_date));
@@ -51,6 +58,14 @@ class Course extends Model
     public function getCourseImg()
     {
         return $this->course_img?:'/student/assets/img/our-work-05.jpg';
+    }
+    public function getTaxPrice()
+    {
+        return ($this->price*5.4)/100;
+    }
+    public function getTotalAmount()
+    {
+        return $this->price+$this->getTaxPrice();
     }
 }
 

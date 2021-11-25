@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\TeacherAuthController;
 use App\Http\Controllers\StudentAdminController;
@@ -59,7 +61,7 @@ Route::resource('section',SectionController::class);
 Route::resource('teacher',TeacherController::class);
 
 Route::get('/students',[StudentAdminController::class,'index'])->name('admin.students');
-
+Route::resource('exam',ExamController::class);
 });
 
 
@@ -67,11 +69,10 @@ Route::get('/students',[StudentAdminController::class,'index'])->name('admin.stu
 Route::get('/course/attend/{section}', [CourseController::class, 'showsection'])->name(
     'course.section'
 )->middleware('auth:web');
+
 Route::post('/course/attend', [CourseController::class, 'attend'])->name(
     'course.attend'
 );
-
-
 
 Route::get('/course',[HomeController::class, 'show'])->name('course.show');
 
@@ -85,6 +86,9 @@ Route::get('/',[HomeController::class,'index']);
 
 Route::get("/profile",[StudentController::class,'index'])->name('student.profile');
 Route::post("/profile/edit",[StudentController::class,'update'])->name('student.update');
+
+Route::get('/voucher/section/{section}',[VoucherController::class,'index'])->name('voucher');
+
 
 Route::get('/check/{id}',function(){
    if(strpos(Route::currentRouteName(),'check') !== false){

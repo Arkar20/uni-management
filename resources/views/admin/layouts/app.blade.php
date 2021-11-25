@@ -78,7 +78,7 @@
       <!--logo start-->
       <a href="index.html" class="logo">Nice <span class="lite">Admin</span></a>
       <!--logo end-->
-
+{{-- 
       <div class="nav search-row" id="top_menu">
         <!--  search form start -->
         <ul class="nav top-menu">
@@ -90,7 +90,7 @@
           </li>
         </ul>
         <!--  search form end -->
-      </div>
+      </div> --}}
       @auth('staff')
       <div class="top-nav notification-row">
         <!-- notificatoin dropdown start-->

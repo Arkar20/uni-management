@@ -160,27 +160,42 @@
             <h1 class="h2 semi-bold-600 text-center mt-2">Your Courses</h1>
             <p class="text-center pb-5 light-300">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut facilisis.</p>
 
-            <!-- Start Pricing Horizontal -->
+            @forelse ($user->attendsections as $section)
+                 <!-- Start Pricing Horizontal -->
             <div class="pricing-horizontal row col-10 m-auto d-flex shadow-sm rounded overflow-hidden bg-white">
                 <div class="pricing-horizontal-icon col-md-3 text-center bg-secondary text-light py-4">
                     <i class="display-1 bx bx-package pt-4"></i>
-                    <h5 class="h5 semi-bold-600 pb-4 light-300">Free</h5>
+                    <h5 class="h5 semi-bold-600 pb-4 light-300">{{$section->course->name}}</h5>
                 </div>
                 <div class="pricing-horizontal-body offset-lg-1 col-md-5 col-lg-4 d-flex align-items-center pl-5 pt-lg-0 pt-4">
-                    <ul class="text-left px-4 list-unstyled mb-0 light-300">
-                        <li><i class="bx bxs-circle me-2"></i>5 Users</li>
-                        <li><i class="bx bxs-circle me-2"></i>2 TB space</li>
-                        <li><i class="bx bxs-circle me-2"></i>Community Forums</li>
+                    <ul   class="text-left px-4 list-unstyled mb-0 light-300">
+                                <li><i class="bx bxs-circle me-2"></i>
+                                    <span class="font-weight-bold">Section-</span>
+                                    {{$section->name}}</li>
+                        <li><i class="bx bxs-circle me-2"></i>
+                            <span class="font-weight-bold">Start Date</span>
+                            {{$section->course->start_date}}</li>
+                        <li><i class="bx bxs-circle me-2"></i>
+                            <span class="font-weight-bold">End Date</span>
+                            
+                            {{$section->course->end_date}}</li>
+                  
                     </ul>
                 </div>
                 <div class="pricing-horizontal-tag col-md-4 text-center pt-3 d-flex align-items-center">
                     <div class="w-100 light-300">
-                        <p>$0</p>
-                        <a href="#" class="btn rounded-pill px-4 btn-outline-primary mb-3">Get Now</a>
+                        <p>${{$section->course->getTotalAmount()}}</p>
+                        <a href="{{route('voucher',$section->id)}}" class="btn rounded-pill px-4 btn-outline-primary mb-3">View Voucher</a>
                     </div>
                 </div>
             </div>
             <!-- End Pricing Horizontal -->
+            @empty
+            <div class="pricing-horizontal row col-10 m-auto d-flex shadow-sm rounded overflow-hidden bg-white">
+                <h4>No Courses Yet.</h4>
+            </div>
+            @endforelse
+           
 
             
 

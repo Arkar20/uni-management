@@ -10,9 +10,18 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+        <!-- Load Require CSS -->
+    <link href="{{asset('student/assets/css/boxicon.min.css')}}" rel="stylesheet">
+
+    <link href="{{asset('student/assets/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Font CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Load Tempalte CSS -->
+    <link rel="stylesheet" href="{{asset('student/assets/css/templatemo.css')}}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{asset('student/assets/css/custom.css')}}">
+    
         <style type="text/css" media="screen">
             html,
             body {
