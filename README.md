@@ -1,3 +1,11 @@
+## learning multiple auth
+
+This project include three authentications for different tables
+
+(Teacher, Student, Admins) 
+
+
+
 ## Installation
 
 Install my-project on the machine
